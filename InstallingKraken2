@@ -1,0 +1,224 @@
+#This is me trying to install kraken into my conda environnment called myenv
+#I downloaded the source file for kraken2 and then moved it from my downloads folder into myenv in miniconda3
+
+(myenv) tyl17@HR19856 kraken2-2.1.3 % ./install_kraken2.sh kraken2-2.1.3  
+g++ -fopenmp -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o estimate_capacity.o estimate_capacity.cc
+clang: error: unsupported option '-fopenmp'
+make: *** [estimate_capacity.o] Error 1
+
+#Above was when I tried following the install instructions to run the kraken shell script that is apart of the install file. 
+
+(myenv) tyl17@HR19856 kraken2-2.1.3 % conda install kraken2-2.1.3 
+Collecting package metadata (current_repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - kraken2-2.1.3
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/osx-arm64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/osx-arm64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+#above is trying to install from the web using conda install. But I already couldn't install from the source and had the '-fopenmp' error. 
+
+(myenv) tyl17@HR19856 kraken2-2.1.3 % cd
+(myenv) tyl17@HR19856 ~ % conda install -n myenv kraken2
+Collecting package metadata (current_repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - kraken2
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/osx-arm64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/osx-arm64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+#above is trying to install from the web using conda install. But I already couldn't install from the source and had the '-fopenmp' error. 
+
+(myenv) tyl17@HR19856 ~ % conda install -c bioconda kraken2    
+Collecting package metadata (current_repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: unsuccessful initial attempt using frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - kraken2
+
+Current channels:
+
+  - https://conda.anaconda.org/bioconda/osx-arm64
+  - https://conda.anaconda.org/bioconda/noarch
+  - https://repo.anaconda.com/pkgs/main/osx-arm64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/osx-arm64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+#above is trying to install from the web using bioconda install. But I already couldn't install from the source and had the '-fopenmp' error. 
+
+(myenv) tyl17@HR19856 ~ % cp /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2 .
+
+#Above commandline code is me copying the source code of kraken2 from the downloads folder to the myenv folder. 
+
+(myenv) tyl17@HR19856 ~ % cp /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2-build .
+#Above commandline code is me copying the source code of kraken2 from the downloads folder to the myenv folder. 
+
+(myenv) tyl17@HR19856 ~ % cp /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2-inspect .
+#Above commandline code is me copying the source code of kraken2 from the downloads folder to the myenv folder. 
+
+(myenv) tyl17@HR19856 ~ % ls
+Bioinformatics
+Desktop
+Documents
+Downloads
+Library
+Movies
+Music
+OneDrive - New York State Office of Information Technology Services
+Pictures
+Public
+README.md
+kraken2
+kraken2-build
+kraken2-inspect
+life
+miniconda3
+pyprojects
+(myenv) tyl17@HR19856 ~ % 
+
+#below is all me working in base environment
+(base) tyl17@HR19856 kraken2-2.1.3 % ./install_kraken2.sh kraken2
+g++ -fopenmp -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o estimate_capacity.o estimate_capacity.cc
+clang: error: unsupported option '-fopenmp'
+make: *** [estimate_capacity.o] Error 1
+
+(base) tyl17@HR19856 kraken2-2.1.3 % nano install_kraken2.sh 
+
+(base) tyl17@HR19856 kraken2-2.1.3 % ls
+CHANGELOG.md		README.md		install_kraken2.sh	scripts
+CMakeLists.txt		data			kraken2			src
+LICENSE			docs			kraken2-2.1.3
+
+(base) tyl17@HR19856 kraken2-2.1.3 % cd src 
+
+(base) tyl17@HR19856 src % ls
+CMakeLists.txt			hyperloglogplus.cc		omp_hack.cc
+Makefile			hyperloglogplus.h		omp_hack.h
+aa_translate.cc			k2mask.cc			readcounts.h
+aa_translate.h			kraken2_data.h			reports.cc
+build_db.cc			kraken2_headers.h		reports.h
+classify.cc			kv_store.h			seqreader.cc
+compact_hash.cc			lookup_accession_numbers.cc	seqreader.h
+compact_hash.h			mmap_file.cc			taxonomy.cc
+dump_table.cc			mmap_file.h			taxonomy.h
+estimate_capacity.cc		mmscanner.cc			threadpool.h
+gzstream.h			mmscanner.h			utilities.cc
+hyperloglogplus-bias.h		mmtest.cc			utilities.h
+
+#These steps are for looking for the Makefile
+
+#We found Makefile and will now edit it
+(base) tyl17@HR19856 src % nano Makefile 
+
+(base) tyl17@HR19856 src % cd ..
+(base) tyl17@HR19856 kraken2-2.1.3 % ./install_kraken2.sh kraken2
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o estimate_capacity.o estimate_capacity.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o seqreader.o seqreader.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o mmscanner.o mmscanner.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o omp_hack.o omp_hack.cc
+omp_hack.cc:9:2: warning: "OpenMP not found, multi-threading will be DISABLED!" [-W#warnings]
+#warning "OpenMP not found, multi-threading will be DISABLED!"
+ ^
+omp_hack.cc:10:2: warning: "To fix this, please make sure your GCC installation uses OpenMP." [-W#warnings]
+#warning "To fix this, please make sure your GCC installation uses OpenMP."
+ ^
+2 warnings generated.
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o utilities.o utilities.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o estimate_capacity estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o build_db.o build_db.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o mmap_file.o mmap_file.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o compact_hash.o compact_hash.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o taxonomy.o taxonomy.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o build_db build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o classify.o classify.cc
+classify.cc:327:11: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+          sprintf(buffer, " kraken:taxid|%llu",
+          ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h:180:1: note: 'sprintf' has been explicitly marked deprecated here
+__deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:215:48: note: expanded from macro '__deprecated_msg'
+        #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+                                                      ^
+1 warning generated.
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o reports.o reports.cc
+reports.cc:124:3: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  sprintf(pct_buffer, "%6.2f", 100.0 * clade_counter.readCount() / total_seqs);
+  ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h:180:1: note: 'sprintf' has been explicitly marked deprecated here
+__deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:215:48: note: expanded from macro '__deprecated_msg'
+        #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+                                                      ^
+1 warning generated.
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o hyperloglogplus.o hyperloglogplus.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o aa_translate.o aa_translate.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o classify classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o dump_table.o dump_table.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o dump_table dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o lookup_accession_numbers.o lookup_accession_numbers.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o lookup_accession_numbers lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING   -c -o k2mask.o k2mask.cc
+g++ -Wall -std=c++11 -O3 -DLINEAR_PROBING -o k2mask k2mask.o seqreader.o -lz -pthread
+cp estimate_capacity build_db classify dump_table lookup_accession_numbers k2mask "/Users/tyl17/Downloads/kraken2-2.1.3/kraken2/"
+
+Kraken 2 installation complete.
+
+To make things easier for you, you may want to copy/symlink the following
+files into a directory in your PATH:
+  /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2
+  /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2-build
+  /Users/tyl17/Downloads/kraken2-2.1.3/kraken2/kraken2-inspect
+
+
+#In Makefile I changed this edit. 
+#CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O3
+CXXFLAGS = -Wall -std=c++11 -O3
+
+#Open MPI in macbooks is not in the standard folder so kraken could not find it. 
+#We used nano to look at the shellscript install code for kraken2 but we didn't change anything. 
+-fopenmp literally Enables handling of OpenMP directives in gcc.
